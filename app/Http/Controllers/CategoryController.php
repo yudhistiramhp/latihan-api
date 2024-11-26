@@ -10,10 +10,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $keyword = $request->get('keyword', '');
-        $categories = Category::where('name', 'like', '%' .$keyword. '%')->orderBy('name')->paginate(10);
+        $categories = Category::all();
         return response()->json(['categories' => $categories]);
     }
 

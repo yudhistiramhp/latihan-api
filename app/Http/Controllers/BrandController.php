@@ -10,10 +10,9 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $keyword = $request->get('keyword', '');
-        $brands = Brand::where('name', 'like', '%' .$keyword. '%')->orderBy('name')->paginate(10);
+        $brands = Brand::all();
         return response()->json(['brands' => $brands]);
     }
 
